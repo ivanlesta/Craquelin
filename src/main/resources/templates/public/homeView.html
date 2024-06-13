@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:replace="~{/fragmentos.html::head}">
+  <style>
+    .carousel-item img {
+      max-height: 500px;
+      width: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="margin-top: 63px;">
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <p style="font-family: 'Al Fresco'; font-size: 420%; text-align: center;">
+          Bienvenidos a Craquelin
+      </p>
+      <img src="/images/logo.png" alt="Logo" style="width: 120px; height: auto; margin-left: 20px;">
+  </div>
+  
+    <div class="carousel">
+      <div class="carousel-images">
+        <img src="/images/productos.jpg" alt="Productos">
+        <img src="/images/repostera1.png" alt="Repostera 1" />
+        <img src="/images/cupcakes.png" alt="Producto 2">
+        <img src="/images/galletas.png" alt="Producto 3">
+        <img src="/images/repostera2.png" alt="Repostera 2" />
+      </div>
+      <button class="direccionCarrusel prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="direccionCarrusel next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </div>
+  <div class="spacer"></div>
+
+  <div id="popup-container">
+    <div id="popup-content">
+      <img src="/images/gifGalleta.gif" id="gif" alt="Gif Galleta">
+      <p style="font-weight: bold;">Por favor, acepta nuestra Política de Cookies.</p>
+      <p>En un mundo donde la magia de las galletas se desvanece con cada desperdicio, surge una lección
+        sabrosa pero crucial: cada migaja cuenta. Miles de galletas, repletas de dulces secretos, se deslizan hacia el
+        olvido cuando las ignoramos. No hay hechizo que pueda revivir esas delicias una vez que caen al abismo del
+        derroche. En lugar de despedir a estas golosinas al destierro, deberíamos abrazar el poder de cada bocado. Cada
+        galleta es un cuento por descubrir, una pequeña historia que se cuenta con sabores exquisitos. Entonces, la
+        próxima vez que te enfrentes a esa difícil elección entre devorar o descartar, recuerda: el encanto está en
+        saborear cada instante antes de que se desvanezca en la tristeza de las migas perdidas. ¡Atrapa la magia antes
+        de que se escape entre tus dedos y llénate de la dulce alegría que solo una galleta puede ofrecer!</p>
+      <button id="acceptCookies" class="cookiesBtn">Aceptar</button>
+      <button id="rejectCookies" class="cookiesBtn">Rechazar</button>
+    </div>
+  </div>
+  <script src="/js/carrusel.js"></script>
+  <script src="/js/cookies.js"></script>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="background-color: antiquewhite;font-family: Ink Free; margin-top: 68px; padding: 15px;">
+    <h1>Editar producto</h1>
+    <form method="post" action="#" th:action="@{/productos/edit/submit}" th:object="${productoForm}">
+      <label><input type="hidden" id="idProducto" th:field="*{idProducto}" /> </label><br />
+      <label><input type="hidden" id="foto" th:field="*{foto}" /> </label><br />
+      <label>Nombre:
+        <input type="text" id="nombreProducto" th:field="*{nombreProducto}" /></label>
+      <br />
+      <label>Precio:
+        <input type="text" id="precioProducto" th:field="*{precioProducto}" /></label><br />
+      <label>Descripción:
+        <input type="text" id="descripcionProducto" th:field="*{descripcionProducto}" /></label><br />
+      <label>Categoria
+        <select name="categoria" th:field="*{categoria}">
+          <option th:each="cat : ${listaCategorias}" th:value="${cat.idCategoria}" th:text="${cat.nombreCategoria}">
+          </option>
+        </select> </label><br />
+      <input class="button_category" type="submit" value="Enviar" />
+    </form>
+  </div>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+
+</body>
+
+</html>

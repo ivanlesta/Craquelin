@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="margin-top: 68px; font-family: Ink Free; background-color: antiquewhite; padding: 20px">
+
+    <h2>Editar perfil</h2>
+    <form method="post" th:action="@{/clientes/edit/submit}" th:object="${clienteForm}">
+      <input type="hidden" th:field="*{idCliente}" />
+      <label>Nombre:
+        <input type="text" id="nombreCliente" th:field="*{nombreCliente}" /></label><br />
+      <label>Apellidos:
+        <input type="text" id="apellidos" th:field="*{apellidos}" /></label><br />
+      <label>Teléfono:
+        <input type="text" id="telefono" th:field="*{telefono}" /></label><br />
+      <label>Dirección:
+        <input type="text" id="direccionHabitual" th:field="*{direccionHabitual}" /></label><br />
+      <input type="hidden" th:field="*{email}" />
+      <input type="hidden" th:field="*{contraseña}" />
+      <input type="hidden" th:field="*{rol}" />
+      <input type="hidden" th:field="*{fechaRegistro}" />
+      <input class="button_category" type="submit" value="Enviar" />
+    </form>
+  </div>
+
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+
+</body>
+
+
+</html>

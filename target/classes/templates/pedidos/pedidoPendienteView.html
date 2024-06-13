@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="font-family: Ink Free; margin-top: 68px; background-color: antiquewhite;">
+    <h1>Carrito</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="linea : ${pedido.lineasDePedido}">
+          <td th:text="${linea.producto.nombreProducto}">Nombre del Producto</td>
+          <td th:text="${linea.producto.descripcionProducto}">Descripción del Producto</td>
+          <td th:text="${linea.cantidadProducto}">Cantidad</td>
+          <td th:text="${#numbers.formatDecimal(linea.producto.precioProducto, 1, 2) + ' €'}">Precio</td>
+          <td>
+            <form th:action="@{/pedidos/pedidoPendiente/eliminarLinea/{idLinea}(idLinea=${linea.idLinea})}"
+              method="post">
+              <button class="button_category" type="submit" style="margin-left: 20px">Quitar del carrito</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr style="background-color:#bca89a">
+          <td colspan="2">Total</td>
+          <td th:text="${pedido.unidadesTotales}">Unidades Totales</td>
+          <td th:text="${#numbers.formatDecimal(pedido.precioTotal, 1, 2) + ' €'}">Precio Total</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div style="display: flex; justify-content: space-between;">
+      <a class="button_category" th:href="@{/productos/list}">Seguir comprando</a>
+      <form th:action="@{/pedidos/pedidoPendiente/submit}" method="post"
+        th:if="${!#lists.isEmpty(pedido.lineasDePedido)}" th:object="${pedido}">
+        <input type="hidden" id="precioTotal" th:field="*{precioTotal}" />
+        <input type="hidden" id="unidadesTotales" th:field="*{unidadesTotales}" />
+        <input type="hidden" id="idCliente" th:field="*{comprador.idCliente}" />
+        <input type="hidden" id="lineasDePedido" th:field="*{lineasDePedido}" />
+        <button class="button_category" type="submit" style="margin-left: 20px">Finalizar pedido</button>
+      </form>
+      <form th:action="@{/pedidos/pedidoPendiente/vaciarCarrito}" method="post">
+        <button class="button_category" type="submit" style="margin-left: 20px">Vaciar carrito</button>
+      </form>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="background-color: antiquewhite;">
+    <h1>Nuevo pedido</h1>
+    <form method="post" action="#" th:action="@{/pedido/new/submit}" th:object="${pedidoForm}">
+      Cliente:<br />
+      <select name="list1" th:field="*{cliente}">
+        <option value="0">select option</option>
+        <option th:each="cliente:${listaClientes}" th:value="${cliente.idCliente}" th:text="${cliente.nombreCliente}">
+        </option>
+      </select><br />
+      Producto:<br />
+      <select name="list2" th:field="*{producto}">
+        <option value="0">select option</option>
+        <option th:each="producto:${listaProductos}" th:value="${producto.idProducto}"
+          th:text="${producto.nombreProducto}"></option>
+      </select><br />
+      <label>Unidades totales del pedido:<input type="text" readonly id="cantidadPedido"
+          th:field="*{cantidadPedido}" /></label><br />
+      <label>Precio total del pedido:<input type="text" readonly id="precioPedido"
+          th:field="*{precioPedido}" /></label><br />
+      <label>Pedido terminado:<input type="checkbox" id="terminado" th:field="*{terminado}" /></label><br />
+      <label>Fecha de realización del pedido:
+        <input type="text" id="fechaPedido" th:field="*{fechaPedido}" /></label><br />
+      <input type="submit" value="Enviar" />
+    </form>
+  </div>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+
+</body>
+
+</html>

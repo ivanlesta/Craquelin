@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+    <nav th:replace="~{/fragmentos.html::menu}"></nav>
+    <div style="margin-top: 68px; font-family: Ink Free; background-color: antiquewhite;">
+        <h1>Cambiar contraseña</h1>
+        <form action="#" method="post" th:action="@{/clientes/cambiarContraseña/submit}" th:object="${formPass}">
+            <label for="nuevaContraseña">Nueva contraseña:</label>
+            <input type="password" id="nuevaContraseña" th:field="*{nuevaContraseña}" required><br><br>
+
+            <label for="confirmaContraseña">Confirmar contraseña:</label>
+            <input type="password" id="confirmaContraseña" th:field="*{confirmaContraseña}" required><br><br>
+
+            <button class="button_category" type="submit">Cambiar contraseña</button>
+        </form>
+    </div>    
+    <div th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></div>
+
+    <footer th:replace="~{/fragmentos.html::footer}"></footer>
+    <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

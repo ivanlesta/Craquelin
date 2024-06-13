@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="background-color: antiquewhite; margin-top: 68px; padding: 15px; font-family: Ink free;">
+    <h1 style="font-weight: bold;">Nuevo producto</h1>
+    <form method="post" enctype="multipart/form-data" action="#" th:action="@{/productos/new/submit}"
+      th:object="${productoForm}">
+      <label><input type="hidden" id="idProducto" th:field="*{idProducto}" /></label><br />
+      <label>Nombre:
+        <input type="text" id="nombreProducto" th:field="*{nombreProducto}" />
+      </label><br />
+      <label>Precio:
+        <input type="text" id="precioProducto" th:field="*{precioProducto}" />
+      </label><br />
+      <label>Descripción:
+        <input type="text" id="descripcionProducto" th:field="*{descripcionProducto}" />
+      </label><br />
+      <label>Categoria
+        <select name="categoria" th:field="*{categoria.nombreCategoria}" id="nombreCategoria">
+          <option th:each="categoria : ${listaCategorias}" th:value="${categoria.nombreCategoria}"
+            th:text="${categoria.nombreCategoria}">
+          </option>
+        </select>
+      </label><br />
+      <label>Imagen:
+        <input type="file" id="imagenProducto" name="imagenProducto" accept="image/*" />
+      </label><br />
+      <input class="button_category" type="submit" value="Enviar" />
+    </form>
+  </div>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+    <nav th:replace="~{/fragmentos.html::menu}"></nav>
+    <div style="margin-top: 68px; font-family: Ink Free; background-color: antiquewhite; color: #6d031c;">
+        <h1 style="font-weight: bold;">Listado de categorías</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th></th>
+                    <th></th>
+            </thead>
+            <tbody>
+                <tr th:each="categoria : ${listaCategorias}">
+                    <td th:text="${categoria.idCategoria}">Id</td>
+                    <td style="font-size: 1.5em;" th:text="${categoria.nombreCategoria}">nombre</td>
+                    <td><a class="button_category" th:href="@{/categorias/edit/{id}(id=${categoria.idCategoria})}">Editar</a></td>
+                    <td><a class="button_category" th:href="@{/categorias/delete/{id}(id=${categoria.idCategoria})}">Borrar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <a class="button_category" th:href="@{/categorias/new}">Nueva categoría</a><br />
+    </div>
+    <footer th:replace="~{/fragmentos.html::footer}"></footer>
+
+    <div th:replace="~{/fragmentos.html::scripts}"></div>
+
+</body>
+
+</html>

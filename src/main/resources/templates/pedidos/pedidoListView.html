@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+
+  <div style="background-color: antiquewhite; font-family: Ink free;">
+    <h1 style="margin-top: 68px;">Listado de todos los Pedidos</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID Pedido</th>
+          <th>Cantidad</th>
+          <th>Precio total</th>
+          <th>Estado</th>
+          <th>Fecha de realización</th>
+          <th>Id Cliente</th>
+          <th>Detalles</th>
+          <th>Anular</th>
+          <th>Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="pedido : ${listaPedidos}">
+          <td th:text="${pedido.idPedido}">Id Pedido</td>
+          <td th:text="${pedido.unidadesTotales}">Unidades totales</td>
+          <td th:text="${pedido.precioTotal}">Precio total</td>
+          <td>
+            <button th:text="${pedido.estadoPedido}" th:classappend="'estado-' + ${pedido.estadoPedido}" th:onclick="'cambiarEstado(' + ${pedido.idPedido} + ')'">Estado
+              pedido</button>
+          </td>
+          <td th:text="${pedido.fechaPedidoFormateada}">Fecha de realización del pedido</td>
+          <td th:text="${pedido.comprador.idCliente}">Id Cliente</td>
+          <td>
+            <a class="button_category" th:href="@{/pedidos/detalle/{id}(id=${pedido.idPedido})}">Detalle</a>
+          </td>
+          <td>
+            <a class="button_category" style="cursor: pointer;" th:onclick="'anularPedido(' + ${pedido.idPedido} + ')'">Anular</a>
+          </td>
+          <td>
+            <a class="button_category" th:href="@{/pedidos/delete/{id}(id=${pedido.idPedido})}">Borrar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="popup-estado">
+    <div id="popup-content">
+      <p>¿Seguro que quieres cambiar el estado del pedido?</p>
+      <button id="aceptarEstado" class="cookiesBtn">Aceptar</button>
+      <button id="rechazarEstado" class="cookiesBtn">Rechazar</button>
+    </div>
+    <div class="spacer"></div>
+  </div>
+  <script src="/js/cambiarEstado.js"></script>
+  <script src="/js/anularPedido.js"></script>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

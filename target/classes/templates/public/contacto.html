@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+
+<body style="background-color: #d2d2c9;">
+    <nav th:replace="~{/fragmentos.html::menu}"></nav>
+    <div style="margin-top: 68px;">
+        <div class="formularioContacto" style="font-family: Ink Free;">
+            <div style="background-color: antiquewhite;  padding: 15px;">
+                <h3 style="font-size: 120%;font-weight: bold">Formulario de Contacto:</h3>
+                <form style="font-size: 100%;" action="#" method="post" th:action="@{/public/contacto/submit}"
+                    th:object="${formInfo}" onsubmit="return validarFormularioContacto()">
+                    <label>Nombre:
+                        <input type="text" id="nombre" th:field="*{nombre}">
+                    </label><br />
+                    <label>Email:
+                        <input type="text" id="email" th:field="*{email}">
+                        <span id="error-email"
+                            style="color: red; font-size: 0.9em; font-weight: bold; display: block;"></span>
+                    </label><br />
+                    Motivo:
+                    <select style="height: 40px;" name="list1" id="list1" th:field="*{motivo}">
+                        <option value="0">Selecciona una opción</option>
+                        <option value="1">Queja</option>
+                        <option value="2">Consulta</option>
+                        <option value="3">Otros</option>
+                    </select>
+                    <span id="error-motivo"
+                        style="color: red; font-size: 0.9em; font-weight: bold; display: block;"></span>
+                    <br />
+                    <label>Comentarios:
+                        <textarea id="comentarios" th:field="*{comentarios}"
+                            style="width: 100%; height: 100px;"></textarea>
+                    </label><br />
+                    <span>Acepto las condiciones del servicio:
+                        <input type="checkbox" id="acepto" th:field="*{aceptarCondiciones}">
+                    </span>
+                    <span id="error-acepto"
+                        style="color: red; font-size: 0.9em; font-weight: bold; display: block;"></span>
+                    <br />
+                    <input class="button_category" style="height: 40px;" type="submit" value="Enviar" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/js/validarFormContacto.js"></script>
+    <footer th:replace="~{/fragmentos.html::footer}"></footer>
+    <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

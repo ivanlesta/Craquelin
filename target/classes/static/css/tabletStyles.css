@@ -1,0 +1,93 @@
+@media screen and (max-width: 768px) {
+
+  /* tabletStyles.css */
+
+  /* General */
+  body {
+    font-size: 18px;
+  }
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+  }
+
+  /* Navbar */
+  .navbar-custom {
+    font-size: 150%;
+    height: 50px;
+  }
+
+  /* Footer */
+  .footer {
+    position: relative;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    text-align: left;
+
+  }
+
+  .footer div {
+    margin-bottom: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Imágenes */
+  .imgMediano {
+    width: 80%;
+  }
+
+  .imgLogo {
+    width: 60%;
+  }
+
+  /* Botones */
+  .button {
+    font-size: 120%;
+  }
+
+  #botonesEntreImg {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Carrusel */
+  .carousel-item img {
+    max-height: 400px;
+  }
+
+  .carousel-images {
+    width: 100%;
+  }
+
+  .carousel-images img {
+    min-width: 100%;
+    height: auto;
+  }
+  
+  /* Pop-up cookies */
+  #popup-container {
+    width: 95%;
+    height: auto;
+    max-height: 90%;
+  }
+
+  #popup-content p {
+    font-size: 120%;
+  }
+
+  .cookiesBtn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+
+}

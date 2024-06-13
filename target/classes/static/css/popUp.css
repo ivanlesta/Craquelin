@@ -1,0 +1,76 @@
+#popup-container {
+  font-family: Al Fresco, Ink free;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  width: 75%;
+  height: 75%;
+  max-width: 700px;
+}
+
+#popup-container.hidden {
+  display: none;
+}
+
+#popup-estado {
+  font-family: Al Fresco, Ink free;
+  font-weight: bold;
+  display: none;
+  position: fixed;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  width: 15%;
+  height: 15%;
+  max-width: 700px;
+}
+
+#popup-estado.hidden {
+  display: none;
+}
+
+#popup-content {
+  text-align: center;
+  font-family: Ink free;
+  color: #673e37;
+}
+
+#popup-close {
+  cursor: pointer;
+  color: #333;
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#gif {
+  width: 250px;
+  height: 250px;
+}
+
+.cookiesBtn {
+  background-color: #6d031c;
+  color: #ffefd0;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cookiesBtn:hover {
+  background-color: #bca89a;
+}

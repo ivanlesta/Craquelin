@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="margin-top: 68px; font-family: Ink Free; background-color: antiquewhite; padding: 15px;">
+    <h1>Hazte socio</h1>
+    <div th:if="${errorMessage}" class="error-message">
+      <p th:text="${errorMessage}"></p>
+    </div>
+    <form method="post" action="#" th:action="@{/clientes/new/submit}" th:object="${clienteForm}"
+      onsubmit="return validarNuevoCliente()">
+      <label><input type="hidden" id="idCliente" th:field="*{idCliente}" /> </label><br />
+      <label>Nombre:
+        <input type="text" id="nombreCliente" th:field="*{nombreCliente}" required /></label><br />
+      <label>Apellidos:
+        <input type="text" id="apellidos" th:field="*{apellidos}" required /></label><br />
+      <label>Contraseña:
+        <input type="password" id="contraseña" th:field="*{contraseña}" required /></label><br />
+        <span id="error-contraseña"
+        style="color: red; font-size: 0.9em; font-weight: bold; display: block;"></span>
+      <label>Email:
+        <input type="email" id="email" th:field="*{email}" required /></label><br />
+        <span id="error-email"
+        style="color: red; font-size: 0.9em; font-weight: bold; display: block;"></span>
+      <label>Teléfono:
+        <input type="tel" id="telefono" th:field="*{telefono}" required /></label><br />
+        <span id="error-telefono"
+        style="color: red; font-size: 0.9em; font-weight: bold; display: block;"></span>
+      <label>Dirección:
+        <input type="text" id="direccionHabitual" th:field="*{direccionHabitual}" required /></label><br />
+      <label><input type="hidden" id="fechaRegistro" th:field="*{fechaRegistro}" /></label><br />
+
+      <input class="button_category" type="submit" value="Enviar" />
+    </form>
+  </div>  
+  <script src="/js/validarNuevoCliente.js"></script>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

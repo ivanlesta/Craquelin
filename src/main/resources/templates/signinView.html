@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="background-color: antiquewhite; padding: 15px;">
+    <h2 style="margin-top: 68px; font-family: Ink free; font-size: 120%; font-weight: bold;">Introduce tus credenciales:</h2>
+    <div th:if="${param.error}" class="error-message">Credenciales incorrectas</div>
+
+    <div th:if="${successMessage}" class="success-message" style="color: green; font-size: 1.2em; font-weight: bold;">
+      <p th:text="${successMessage}"></p>
+    </div>
+
+    <div th:if="${param.logout}">Te has desconectado</div>
+    <form th:action="@{/login}" method="post">
+      <input style="font-family: Ink Free;" type="text" name="username" placeholder="Email" /><br />
+      <input style="font-family: Ink Free;" type="password" name="password" placeholder="Contraseña" /><br />
+      <br>
+      <button class="button_category" style="font-family: Ink Free;" type="submit">Login</button>
+      <br><br>
+
+      <p style="font-family: Ink Free; font-size: 130%; font-weight: bold;">¿Todavía no eres socio?</p>
+      <a class="button_category" style="font-family: Ink Free;" href="/clientes/new">Regístrate</a>
+    </form>
+  </div>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

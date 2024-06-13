@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+    <nav th:replace="~{/fragmentos.html::menu}"></nav>
+    <div style="margin-top: 88px;">
+        <a th:each="categoria : ${listaCategorias}"
+            th:class="${categoria.idCategoria == categoriaSeleccionadaId} ? 'button_category selected' : 'button_category'"
+            th:text="${categoria.nombreCategoria.toUpperCase()}"
+            th:href="@{/productos/categoria/{idCategoria}(idCategoria=${categoria.idCategoria})}"
+            style="font-size: 150%;"></a>
+    </div>
+    <h2 style="font-family: Al Fresco; font-size: 420%;">Listado de delicias</h2>
+    <a class="button_category" sec:authorize="hasAnyRole('MANAGER', 'ADMIN')" th:href="@{/productos/new}"
+    style="font-family: Ink free;  margin-bottom: -98px;">Nuevo producto</a><br />
+    <div class="productos-view" th:if="${listaProductos != null}" th:unless="${#lists.isEmpty(listaProductos)}">
+        <div th:each="producto : ${listaProductos}" class="product-container">
+            <div>
+                <strong th:text="${producto.nombreProducto}" style="font-family:Ink free; font-size: 90%; margin-top: -20px;">Nombre del
+                    Producto</strong><br><br>
+                <img th:src="@{${producto.foto}}" alt="Imagen de Producto">
+            </div>
+            <div class="product-details" th:text="${producto.descripcionProducto}">Descripción del Producto</div>
+            <div class="product-actions">
+                <div th:if="${#authorization.expression('isAuthenticated()')}">
+                    <form class="addProductForm" method="post"
+                        th:action="@{/lineaDePedido/add/{idProducto}/{cantidad}/{idCategoria}(idProducto=${producto.idProducto}, cantidad=1, idCategoria=${producto.categoria.idCategoria})}">
+                        <strong style="font-family: Ink free; font-weight: bold;font-size: 120%;"
+                            th:text="${producto.precioProducto} + ' € /ud'">Precio</strong><br><br>
+                        <input class="button_category" type="submit" value="Añadir al carrito" style="height: 20%;font-family: Ink free;" />
+                    </form>
+                </div>
+                <div th:unless="${#authorization.expression('isAuthenticated()')}">
+                    <a class="button_category" style="font-family: Ink free; font-size: 70%;" href="/public/signin">Inicia
+                        sesión para comprar</a>
+                </div>
+                <br>
+                <div sec:authorize="hasAnyRole('MANAGER', 'ADMIN')">
+                    <form th:action="@{/productos/edit/{id}(id=${producto.idProducto})}" method="get">
+                        <button class="button_category" style="font-family: Ink free;" type="submit">Editar</button>
+                    </form>
+                    <br>
+                    <form th:action="@{/productos/delete/{id}(id=${producto.idProducto})}" method="get">
+                        <button class="button_category" style="font-family: Ink free;" type="submit">Borrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var selectedButtonId = localStorage.getItem('selectedButtonId');
+
+            if (selectedButtonId) {
+                $('#' + selectedButtonId).addClass('selected');
+            }
+
+            $(".button_category").click(function () {
+                $(".button_category").removeClass("selected");
+                $(this).addClass("selected");
+                localStorage.setItem('selectedButtonId', $(this).attr('id'));
+            });
+        });
+    </script>
+    <footer th:replace="~{/fragmentos.html::footer}"></footer>
+    <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>
+
+
+</html>

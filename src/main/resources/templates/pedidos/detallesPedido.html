@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+    <nav th:replace="~{/fragmentos.html::menu}"></nav>
+    <div id="pedido-detalles" style="margin-top: 68px; background-color: antiquewhite; font-family: Ink free;">
+        <h2 style="font-weight: bold;">Detalle pedido</h2>
+        <div th:if="${pedido != null}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td th:text="${pedido.idPedido}">idPedido</td>
+                        <td th:text="${pedido.unidadesTotales}">unidadesTotales</td>
+                        <td th:text="${pedido.precioTotal} + ' €'">precioTotal</td>
+                        <td th:text="${pedido.fechaPedidoFormateada}">fechaPedido</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <h3 style="font-weight: bold;">Productos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="linea : ${listaProductos}">
+                        <td th:text="${linea.producto.nombreProducto}">nombreProducto</td>
+                        <td th:text="${linea.cantidadProducto}">cantidadProducto</td>
+                        <td th:text="${linea.producto.precioProducto} + ' €'">precioProducto</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a class="button_category" th:href="@{/pedidos/list}">Volver al listado</a>
+        </div>
+    </div>
+    <footer th:replace="~{/fragmentos.html::footer}"></footer>
+
+    <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

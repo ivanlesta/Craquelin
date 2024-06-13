@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="background-color: antiquewhite; margin-top: 68px; font-family: Ink free;">
+    <h1>Tus pedidos</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha</th>
+          <th>Precio total</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="pedido : ${listaPedidos}">
+          <td th:text="${pedido.idPedido}">ID</td>
+          <td th:text="${pedido.fechaPedidoFormateada}">Fecha</td>
+          <td th:text="${pedido.precioTotal} + ' €'">Total</td>
+          <td th:text="${pedido.EstadoPedido}">Estado</td>
+          
+          <td>
+            <a class="button_category" th:href="@{/pedidos/detalle/{id}(id=${pedido.idPedido})}">Detalle pedido</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>

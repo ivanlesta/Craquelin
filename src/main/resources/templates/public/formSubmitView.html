@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{/fragmentos.html::head}"></head>
+
+<body style="background-color: #d2d2c9;">
+  <nav th:replace="~{/fragmentos.html::menu}"></nav>
+  <div style="background-color: antiquewhite; margin-top: 68px; font-family: Ink Free;">
+    <h1>Formulario procesado</h1>
+    <p>Nombre: <span th:text="${formInfo.nombre}"></span></p>
+    <p>Email: <span th:text="${formInfo.email}"></span></p>
+    <p>Motivo: <span th:text="${motivoElegido}"></span></p>
+    <p>Comentarios: <span th:text="${formInfo.comentarios}"></span></p>
+  </div>
+  <footer th:replace="~{/fragmentos.html::footer}"></footer>
+
+  <div th:replace="~{/fragmentos.html::scripts}"></div>
+</body>
+
+</html>
