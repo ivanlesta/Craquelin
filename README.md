@@ -1,6 +1,6 @@
 ¡Bienvenidos a Craquelin!
 
-Proyecto de fin de ciclo del FP Dual Superior de Desarrollo de Aplicaciones Web, en el IES Fernando Wirtz (2022-2024).
+Proyecto de fin de ciclo del FP Dual Superior de Desarrollo de Aplicaciones Web, en el IES Fernando Wirtz (2023-2024).
 Por: Iván Lesta Casáis.
 
 Estado actual:
