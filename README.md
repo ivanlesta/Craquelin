@@ -7,7 +7,7 @@ Estado actual:
 
 -Servidor: Java 17 con Spring MVC. Envío de datos al front con Thymeleaf.
 
--Base de datos:Se puede conectar a MariaDB en local, pero actualmente está configurado en memoria H2. Tiene un usuario admin con control total
+-Base de datos: Se puede conectar a MariaDB en local, pero actualmente está configurado en memoria H2. Tiene un usuario admin con control total
 para poder ejecutar con facilidad las pruebas:
 
 	- Admin: admin@gmail.com
